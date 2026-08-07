@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/user')->group(function () {
+    Route::get('/retrieve', [UserController::class, 'retrieve']);
     Route::post('/sign-in', [UserController::class, 'signin']);
     Route::post('/sign-up', [UserController::class, 'signup']);
     Route::patch('/{email}/email-verification', [UserController::class, 'emailVerification']);

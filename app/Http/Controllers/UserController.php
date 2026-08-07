@@ -13,6 +13,15 @@ use Laravel\Fortify\Features;
 
 class UserController extends Controller
 {
+    public function retrieve()
+    {
+        try {
+            $users = User::get()->map(fn($item) => ['value' => $item->id, 'text' => $item->name]);
+            return response()->json($users, 200);
+        } catch (Error $err) {
+            return response()->json(['message' => $err->getMessage()], 503);
+        }
+    }
 
     public function signin(Request $request)
     {
