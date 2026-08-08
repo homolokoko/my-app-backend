@@ -24,7 +24,7 @@ return [
     | may even configure multiple disks of the same driver. Defaults have
     | been setup for each driver as an example of the required options.
     |
-    | Supported Drivers: "local", "ftp", "sftp", "s3"
+    | Supported Drivers: "local", "ftp", "sftp", "s3" 
     |
     */
 
@@ -38,7 +38,14 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
+        'flags' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/flags'),
+            'url' => env('APP_URL') . '/storage/flags',
             'visibility' => 'public',
         ],
 
